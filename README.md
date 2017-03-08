@@ -1,2 +1,2 @@
 # anaval
-Validation of analitical methods
+This R package provides a series of tools for validating bioanalytical methods.
