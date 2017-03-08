@@ -8,7 +8,7 @@
 \describe{
   \item{RunTechnician}{A string of character with the name of the run (lab session)}
   \item{ConcentrationLabel}{A string of character with the lable of the concentration,
-   eg. "Blanc" or "050"}
+   eg. 'Blanc' or '050'}
   \item{ConcentrationValue}{A numeric corresponding to the concentration value}
   \item{CalibCurve}{A string of character corresponding to the id of the calibration curve}
   \item{ReplicateNumber}{A string of character corresponding to the id of the replicate}

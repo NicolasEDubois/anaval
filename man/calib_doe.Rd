@@ -26,5 +26,6 @@ Responses). Responses column contains onlys NaN at this time and will be filled 
 \code{calib_doe} return a DOE in a data.frame where responses is NaN.
 }
 \examples{
-calib_doe(nRun = 2, nCalibCurvesPerRun = 3, nrepCalib = 5, ConcVect = c(0,50, 100, 125, 150, 175, 200))
+calib_doe(nRun = 2, nCalibCurvesPerRun = 3, nrepCalib = 5,
+ ConcVect = c(0,50,100,125,150,175,200))
 }

@@ -5,8 +5,9 @@ Version: 0.1.0
 Author: Nicolas Dubois
 Maintainer: Nicolas Dubois <nicolas.dubois@uclouvain.be>
 Description: This R package provides a series of tools for validating bioanalytical methods.
-License: GPL-3
 Encoding: UTF-8
 LazyData: true
+License: GPL (>= 3)
 Suggests: testthat
 RoxygenNote: 6.0.1
+Depends: R (>= 2.10)
