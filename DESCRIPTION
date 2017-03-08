@@ -1,11 +1,11 @@
 Package: anaval
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Validation of analytical methods
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author: Nicolas Dubois
+Maintainer: Nicolas Dubois <nicolas.dubois@uclouvain.be>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
