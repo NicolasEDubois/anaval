@@ -5,6 +5,7 @@
 #' @param x is a real number (or a vector of real numbers) corresponding the abscissa (the input) of the linear model.
 #' @return y, the output is an real number (or a vector of real numbers) corresponding to the ordinate(s) of the linear model.
 #' @examples linear_link(intercept = 0, slope=1,x=c(1:3))
+#' @export
 linear_link <- function(intercept = 0, slope = 1, x) {
     y = intercept + x * slope
     return(y)
@@ -17,6 +18,7 @@ linear_link <- function(intercept = 0, slope = 1, x) {
 #' @param y is a real number (or a vector of real numbers) corresponding the ordinate(s) of the linear model.
 #' @return x, the output is an real number (or a vector of real numbers) corresponding to the abscissa of the linear model.
 #' @examples linear_link(intercept = 0, slope=1,x=c(1:3))
+#' @export
 linear_link_inv <- function(intercept = 0, slope = 1, y) {
     x = (y - intercept)/slope
     # names(x)=''
