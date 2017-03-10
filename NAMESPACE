@@ -3,3 +3,4 @@
 export(calib_doe)
 export(linear_link)
 export(linear_link_inv)
+export(norm_lin_dataset_sim)
