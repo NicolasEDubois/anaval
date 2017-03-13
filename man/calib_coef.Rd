@@ -5,7 +5,7 @@
 \title{Estimate the fixed coeficient of a calibration dataset.}
 \usage{
 calib_coef(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm",
-  Mode = "Definition of a range of parameters", diagnostics = TRUE)
+  diagnostics = TRUE)
 }
 \arguments{
 \item{DS}{is a data.frame with 6 columns (RunTechnician, ConcentrationLabel, ConcentrationValue, CalibCurve, ReplicateNumber,
@@ -26,5 +26,6 @@ Resp A list with the estimate of the fixed effects, the fixed effect estimates o
 Calib_coef return a list with the estimation of the fixed coefficients and model data for diagnostics.
 }
 \examples{
-RespCalib = calib_coef(DS = CalibDs,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
+data(calib_data)
+RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
 }
