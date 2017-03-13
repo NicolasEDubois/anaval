@@ -70,7 +70,7 @@ calib_doe <- function(nRun = 3, nCalibCurvesPerRun = 2, nrepCalib = 3, ConcVect 
 #' @param MyModel A string of character indicating the type of model to apply. Currently only "lm" for linear model.
 #' @return Resp A list with the estimate of the fixed effects, the fixed effect estimates of all calibration curves and data usefull for diagnostics)
 #' @examples
-#' RespCalib = calib_coef(DS = CalibDs,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
+#' RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
 #' @export
 calib_coef <- function(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm", Mode = "Definition of a range of parameters",
                        diagnostics = TRUE) {
