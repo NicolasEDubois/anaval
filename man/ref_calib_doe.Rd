@@ -19,7 +19,7 @@
 ref_calib_doe
 }
 \description{
-A dataset containing an design of experiment for calibration assessment (with empty results).
+A dataset containing a design of experiment for calibration assessment (with empty results).
 }
 \details{
 ref_calib_doe.

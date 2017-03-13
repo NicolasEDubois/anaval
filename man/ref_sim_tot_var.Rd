@@ -19,7 +19,7 @@
 ref_sim_tot_var
 }
 \description{
-A dataset containing an design of experiment for calibration assessment (with empty results).
+A dataset containing a design of experiment for testing the simulation of the generation of calibration data.
 Summary: 1000 runs, nCalibCurvesPerRun = 1 nrepCalib = 1, Only 1 concentration 10 ppm.
 }
 \details{

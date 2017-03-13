@@ -23,7 +23,7 @@ MyDOE (the output) is a data.frame with 6 columns (RunTechnician, ConcentrationL
 Responses). Responses column contains onlys NaN at this time and will be filled by simulation or with the experimental results.
 }
 \description{
-\code{calib_doe} return a DOE in a data.frame where responses is NaN.
+Calib_doe return a DOE in a data.frame where responses is NaN.
 }
 \examples{
 calib_doe(nRun = 2, nCalibCurvesPerRun = 3, nrepCalib = 5,
