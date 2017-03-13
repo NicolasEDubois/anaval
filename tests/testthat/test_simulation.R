@@ -27,4 +27,8 @@ test_that("norm_lin_dataset_sim total variability is correct", {
     rm(ref_sim3,ref_sim3_var)
 })
 
-# A faire test du biais !!!!!!!!!!!!!!!!!!!!!!!!
+test_that("Biais correspond to the bias introduced", {
+  ref_sim4 <- norm_lin_dataset_sim(ref_sim_tot_var, intercept = 1, slope = 1, SDrun = 1, SDrep = 1, biais = 10)[, "Response"]
+  ref_sim4_avg <- mean(linear_link_inv(intercept = 1, slope = 1, as.numeric(ref_sim4)))
+  expect_that(abs(ref_sim4_avg - 10 - 10)/10 * 100 < 0.5, is_true())
+})
