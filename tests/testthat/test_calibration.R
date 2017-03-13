@@ -23,9 +23,5 @@ test_that("DOE data.frame has the right number of rows", {
 test_that("The DOE data.frame matches the reference data.frame", {
   data("ref_calib_doe")
   test_doe = calib_doe(nRun = 2, nCalibCurvesPerRun = 3, nrepCalib = 5, ConcVect = c(0, 50, 100, 125, 150, 175, 200))
-<<<<<<< HEAD
   expect_equal(test_doe, ref_calib_doe)
-=======
-  expect_identical(test_doe, ref_calib_doe)
->>>>>>> afa0cdd543949c75457a27f68227343846c6873c
-})
+  })
