@@ -33,10 +33,14 @@ Generate simulated observations following a linear model with normal random erro
 \examples{
 MyDOE <- calib_doe(nRun = 2, nCalibCurvesPerRun = 3, nrepCalib = 5,
   ConcVect = c(0,50, 100, 125, 150, 175, 200))
-
 CalibDs <- norm_lin_dataset_sim(MyDOE, intercept = 1, slope = 2, SDrun=1.5,
  SDrep=3, biais = 0)
+
+ monDOE = DOE_Run_Repl_Conc(nRun = 3, nreplicates = 2, ConcVect = c(0, 50, 100, 125,150, 175, 200 ),
+  Threshold='NaN', factorlist=c('RunTechnician','ConcentrationLabel','ConcentrationValue',
+  'ReplicateNumber','Status','Response'))
+ TPL <- norm_lin_dataset_sim(monDOE, intercept = 1, slope = 2, SDrun=1.5, SDrep=3, biais = 0)
 }
 \seealso{
-DOE generating functions such as \code{\link{calib_doe}}
+DOE generating functions such as \code{\link{calib_doe} \link{DOE_Run_Repl_Conc}}
 }
