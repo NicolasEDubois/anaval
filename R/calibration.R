@@ -122,4 +122,68 @@ calib_coef <- function(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm") {
   return(Resp)
 }
 
+#' Provides and displays diagnostics
+#'
+#' calib_diagnostics returns diagnostics to assess the validity of the calibration model.
+#' @param PredResid is a matrix with two columns corresponding to the fitted values and the residuals.
+#' @param LOFpValVect is a numeric vector with the p-values of the lack of fit test for each calibration curves.
+#' @return N/A text and plot for Rmarkdown
+#' @examples
+#' data(calib_data)
+#' RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm')
+#' calib_diagnostics(RespCalib$PredResid, RespCalib$LOFpValVect)
+#' @export
+calib_diagnostics <- function(PredResid, LOFpValVect) {
+  graphics::plot(PredResid[, 1], PredResid[, 2], xlab = "Predicted value", ylab = "Pearson residuals")
 
+  stats::qqnorm(PredResid[, 2])
+  skewness = moments::skewness(PredResid[, 2])
+  kurtosis = moments::kurtosis(PredResid[, 2])
+  graphics::text(2, 0, paste("skewness: ", round(skewness, 2), sep = ""))
+  graphics::text(2, -5, paste("kurtosis: ", round(kurtosis, 2), sep = ""))
+
+  graphics::boxplot(LOFpValVect, main = "Lack-of-Fit tests", xlab = "Lack-of-Fit tests of all calibration curves",
+          ylab = "p-value", xlim = c(0, 10), ylim = c(0, 1.1))
+  graphics::text(6, 1.05, paste("p-val < 5% for ", sum(LOFpValVect < 0.05), " cal. curve(s)", sep = ""))
+  graphics::text(6, 0.9, paste("p-val < 5% for ", round(sum(LOFpValVect < 0.05)/length(LOFpValVect) * 100, 0),
+                     " % of the cal. curves", sep = ""))
+}
+
+#' Displays the calibration curves
+#'
+#' calib_plot plots the calibration curves.
+#' @param Ds is a data.frame with 6 columns (RunTechnician, ConcentrationLabel, ConcentrationValue, CalibCurve, ReplicateNumber,
+#'Responses). Responses column might have been filled by simulation or with the experimental results.
+#' @return N/A plots for Rmarkdown or shiny
+#' @examples
+#' data(calib_data)
+#' calib_plot(calib_data)
+#'
+#' myDOE =calib_doe(nRun = 2, nCalibCurvesPerRun = 2, nrepCalib = 2,
+#' ConcVect = c(0, 50, 100, 125, 150, 175, 200))
+#' calib_data2 = norm_lin_dataset_sim(myDOE, intercept = 0, slope = 1, SDrun = 0.3,
+#' SDrep = 0.3, biais = 0)
+#' calib_plot(calib_data2)
+#'
+#' myDOE =calib_doe(nRun = 60, nCalibCurvesPerRun = 60, nrepCalib = 3,
+#' ConcVect = c(0, 50, 100, 125, 150, 175, 200))
+#' calib_data3 = norm_lin_dataset_sim(myDOE, intercept = 0, slope = 1, SDrun = 0.3,
+#' SDrep = 0.3, biais = 0)
+#' calib_plot(calib_data3)
+#'
+#' @export
+calib_plot <- function(Ds) {
+  Ds2 = as.data.frame(Ds)
+
+  if (length(unique(Ds[, "CalibCurve"])) < 15) {
+    d <- ggplot2::ggplot(Ds2, ggplot2::aes(x = as.numeric(as.character(Ds2[, "ConcentrationValue"])),
+                            y = as.numeric(as.character(Ds2[,"Response"])), group = CalibCurve, colour = CalibCurve)) + ggplot2::xlab("Theoritical Concentration in ppm") + ggplot2::ylab("Analytical response") + ggplot2::geom_point(ggplot2::aes(colour = factor(CalibCurve))) + ggplot2::stat_smooth(ggplot2::aes(colour = factor(CalibCurve)),method = "lm", se = FALSE)
+    print(d)
+  } else if (length(unique(Ds[, "RunTechnician"])) < 15) {
+    d <- ggplot2::ggplot(Ds2, ggplot2::aes(x = as.numeric(as.character(Ds2[, "ConcentrationValue"])),
+            y = as.numeric(as.character(Ds2[,"Response"])), group = RunTechnician, colour = RunTechnician)) + ggplot2::xlab("Theoritical Concentration in ppm") + ggplot2::ylab("Analytical response") + ggplot2::geom_point(ggplot2::aes(colour = factor(RunTechnician)))    + ggplot2::stat_smooth(ggplot2::aes(colour = factor(RunTechnician)),method = "lm", se = FALSE)
+    print(d)
+  } else print(ggplot2::ggplot(Ds2,
+          ggplot2::aes(x = as.numeric(as.character(Ds2[, "ConcentrationValue"])),
+                       y = as.numeric(as.character(Ds2[,"Response"])))) + ggplot2::xlab("Theoritical Concentration in ppm") + ggplot2::ylab("Analytical response") + ggplot2::geom_point(ggplot2::aes()) + ggplot2::stat_smooth(ggplot2::aes(), method = "lm", se = FALSE))
+}
