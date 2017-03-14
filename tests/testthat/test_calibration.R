@@ -28,9 +28,9 @@ test_that("The DOE data.frame matches the reference data.frame", {
 
 test_that("Estimation of slope and intercept", {
   data("calib_data")
-  RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
+  RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm')
   myIntercept = RespCalib$FixedEffectEst['estInt']
   mySlope = RespCalib$FixedEffectEst['estSlope']
   expect_that(abs(myIntercept - 0) < 2, is_true())
-
+  expect_that(abs(mySlope - mySlope) * 100 < 2, is_true())
 })

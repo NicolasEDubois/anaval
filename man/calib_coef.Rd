@@ -4,8 +4,7 @@
 \alias{calib_coef}
 \title{Estimate the fixed coeficient of a calibration dataset.}
 \usage{
-calib_coef(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm",
-  diagnostics = TRUE)
+calib_coef(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm")
 }
 \arguments{
 \item{DS}{is a data.frame with 6 columns (RunTechnician, ConcentrationLabel, ConcentrationValue, CalibCurve, ReplicateNumber,
@@ -16,8 +15,6 @@ Responses). Responses column might have been filled by simulation or with the ex
 \item{UpperRange}{A  real number corresponding to the upper bound of the range in which the modelisation applies.}
 
 \item{MyModel}{A string of character indicating the type of model to apply. Currently only "lm" for linear model.}
-
-\item{ConcVect}{A vector containing one or several concentration or dilution in a numeric form.}
 }
 \value{
 Resp A list with the estimate of the fixed effects, the fixed effect estimates of all calibration curves and data usefull for diagnostics)
@@ -27,5 +24,5 @@ Calib_coef return a list with the estimation of the fixed coefficients and model
 }
 \examples{
 data(calib_data)
-RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
+RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm')
 }

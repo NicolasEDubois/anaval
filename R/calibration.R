@@ -66,15 +66,13 @@ calib_doe <- function(nRun = 3, nCalibCurvesPerRun = 2, nrepCalib = 3, ConcVect 
 #'Responses). Responses column might have been filled by simulation or with the experimental results.
 #' @param LowerRange A  real number corresponding to the lower bound of the range in which the modelisation applies.
 #' @param UpperRange A  real number corresponding to the upper bound of the range in which the modelisation applies.
-#' @param ConcVect A vector containing one or several concentration or dilution in a numeric form.
 #' @param MyModel A string of character indicating the type of model to apply. Currently only "lm" for linear model.
 #' @return Resp A list with the estimate of the fixed effects, the fixed effect estimates of all calibration curves and data usefull for diagnostics)
 #' @examples
 #' data(calib_data)
-#' RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm', diagnostics='TRUE')
+#' RespCalib = calib_coef(DS = calib_data,LowerRange=0,UpperRange=200,MyModel='lm')
 #' @export
-calib_coef <- function(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm",
-                       diagnostics = TRUE) {
+calib_coef <- function(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm") {
   DS2 = as.data.frame(DS[as.numeric(DS[, "ConcentrationValue"]) >= LowerRange & as.numeric(DS[, "ConcentrationValue"]) <=
                            UpperRange, ])
 
@@ -90,10 +88,10 @@ calib_coef <- function(DS, LowerRange = 0, UpperRange = 200, MyModel = "lm",
       Response = as.numeric(as.character(Ds3$Response))
       Conc = as.numeric(as.character(Ds3$ConcentrationValue))
 
-      lmModel <- lm(Response ~ Conc)
+      lmModel <- stats::lm(Response ~ Conc)
 
-      Full = lm(Response ~ as.factor(Conc))  #fit full model
-      LackOfFitTest = anova(lmModel, Full)  #get lack-of-fit test
+      Full = stats::lm(Response ~ as.factor(Conc))  #fit full model
+      LackOfFitTest = stats::anova(lmModel, Full)  #get lack-of-fit test
 
       if (i == 1) {
         MatrixfixedCoef = matrix(NaN, ncol = length(lmModel$coefficients), nrow = ncal)
