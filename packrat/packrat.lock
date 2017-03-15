@@ -9,6 +9,11 @@ Source: CRAN
 Version: 1.62.0-1
 Hash: 14dfb3e8ffe20996118306ff4de1fab2
 
+Package: MASS
+Source: CRAN
+Version: 7.3-45
+Hash: 0650d5701aa7e369e77c9e2c8e1dc913
+
 Package: R6
 Source: CRAN
 Version: 2.2.0
@@ -24,6 +29,12 @@ Source: CRAN
 Version: 0.12.9
 Hash: 7ab41cbe74918de8de87e435ef17e92d
 
+Package: TH.data
+Source: CRAN
+Version: 1.0-8
+Hash: 06a65803bc437e0e86280c425b850313
+Requires: MASS
+
 Package: assertthat
 Source: CRAN
 Version: 0.1
@@ -38,6 +49,11 @@ Package: brew
 Source: CRAN
 Version: 1.0-6
 Hash: 931f9972deae0f205e1c78a51f33149b
+
+Package: coda
+Source: CRAN
+Version: 0.19-1
+Hash: e5aff7792ef292cd4306e58e25e403fe
 
 Package: colorspace
 Source: CRAN
@@ -82,6 +98,11 @@ Source: CRAN
 Version: 0.6.12
 Hash: e53fb8c58673df868183697e39a6a4d6
 
+Package: estimability
+Source: CRAN
+Version: 1.2
+Hash: 9632ba095a2e0f4ed73291c10363d777
+
 Package: formatR
 Source: CRAN
 Version: 1.4
@@ -91,7 +112,8 @@ Package: ggplot2
 Source: CRAN
 Version: 2.2.1
 Hash: 46e5cb78836848aa44655e577433f54b
-Requires: digest, gtable, lazyeval, plyr, reshape2, scales, tibble
+Requires: MASS, digest, gtable, lazyeval, plyr, reshape2, scales,
+    tibble
 
 Package: git2r
 Source: CRAN
@@ -124,6 +146,12 @@ Source: CRAN
 Version: 0.2.0
 Hash: 3d6e7608e65bbf5cb170dab1e3c9ed8b
 
+Package: lsmeans
+Source: CRAN
+Version: 2.25-5
+Hash: 03b9a95e4a20723809b53052cf016d5c
+Requires: coda, estimability, multcomp, mvtnorm, plyr, xtable
+
 Package: magrittr
 Source: CRAN
 Version: 1.5
@@ -145,11 +173,22 @@ Source: CRAN
 Version: 0.14
 Hash: 9567ad51228ea45d2ff6112f4ab20424
 
+Package: multcomp
+Source: CRAN
+Version: 1.4-6
+Hash: 6c2ce6c04299742433fde739755f0f4f
+Requires: TH.data, mvtnorm, sandwich
+
 Package: munsell
 Source: CRAN
 Version: 0.4.3
 Hash: f96d896947fcaf9b6d0074002e9f4f9d
 Requires: colorspace
+
+Package: mvtnorm
+Source: CRAN
+Version: 1.0-6
+Hash: 1f55cdac387721d4eda1126ac9aba73b
 
 Package: openssl
 Source: CRAN
@@ -196,6 +235,12 @@ Source: CRAN
 Version: 0.6
 Hash: fd256f8bfb9a64cc35f98b0decb1a79f
 
+Package: sandwich
+Source: CRAN
+Version: 2.3-4
+Hash: eb356b4a90fa5887a45917b42587bf6c
+Requires: zoo
+
 Package: scales
 Source: CRAN
 Version: 0.4.1
@@ -240,3 +285,13 @@ Source: CRAN
 Version: 1.1.1
 Hash: b913af17a4e43c2fb83f3b60b5353a27
 Requires: BH, Rcpp
+
+Package: xtable
+Source: CRAN
+Version: 1.8-2
+Hash: 7293235cfcc14cdff1ce7fd1a0212031
+
+Package: zoo
+Source: CRAN
+Version: 1.7-14
+Hash: a4c3a385cd122b5d6af30732bf267060

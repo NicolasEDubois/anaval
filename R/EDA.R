@@ -49,7 +49,7 @@ summary_stat <- function(Ds0, VarVect, GroupVar = "") {
       names(MyDataFrame) <- c("Count", "Mean", "Sd", "CV")
       Count <- sum(table(MyVariable))
       Mean <- mean(as.numeric(as.character(MyVariable)))
-      SD <- sd(as.numeric(as.character(MyVariable)))
+      SD <- stats::sd(as.numeric(as.character(MyVariable)))
       CV <- abs(as.numeric(as.character(SD))/as.numeric(as.character(Mean)))
 
       MyDataFrame[1, ] <- c(Count, Mean, SD, CV)
